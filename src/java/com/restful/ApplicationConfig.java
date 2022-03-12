@@ -17,6 +17,7 @@ public class ApplicationConfig extends Application {
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.controller.ComputerController.class);
+        resources.add(com.controller.PaymentController.class);
         resources.add(com.controller.PostController.class);
         resources.add(com.controller.UserController.class);
         resources.add(com.restful.PathCcmsResource.class);

@@ -4,7 +4,7 @@ package com.model;
 public class ModelPayment {
     
     private int idpayment;
-    private ModelUser iduser;
+    private int iduser;
     private String name;
     private String description;
     private String transactionname;
@@ -17,11 +17,11 @@ public class ModelPayment {
         this.idpayment = idpayment;
     }
 
-    public ModelUser getIduser() {
+    public int getIduser() {
         return iduser;
     }
 
-    public void setIduser(ModelUser iduser) {
+    public void setIduser(int iduser) {
         this.iduser = iduser;
     }
 
