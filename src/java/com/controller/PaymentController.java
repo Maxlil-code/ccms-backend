@@ -45,5 +45,30 @@ public class PaymentController {
         return payment;
     }
     
-    
+    @GET
+    @Path("/paymentuser/{userid}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({"application/json"})
+    public ArrayList<ModelPayment> listPayment(@PathParam("userid") int userid) throws Exception {
+        ArrayList<ModelPayment> payments = new ArrayList<>();
+        try {
+            Statement etat = com.connexion.Connexion.seconnecter().createStatement();
+            ResultSet rs = etat.executeQuery("select * from payment where iduser = " + userid);
+            while (rs.next()) {
+                ModelPayment onepayment = new ModelPayment();
+                onepayment.setIduser(rs.getInt("iduser"));
+                onepayment.setName(rs.getString("name"));
+                onepayment.setDescription(rs.getString("description"));               
+                onepayment.setTransactionname(rs.getString("transactionname"));
+                
+
+                payments.add(onepayment);
+            }
+            etat.close();
+            rs.close();
+        } catch (Exception e) {
+            System.out.println("error loading data :" + e.getMessage());
+        }
+        return payments;
+    }
 }
