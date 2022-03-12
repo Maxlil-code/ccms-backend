@@ -5,9 +5,9 @@ public class ModelPost {
     private int idpost;
     private int postnumber;
     private String status;
-    private String Description;
-    private ModelUser iduser;
-    private ModelComputer idcomputer;
+    private String description;
+    private int iduser;
+    private int idcomputer;
 
     public int getIdpost() {
         return idpost;
@@ -34,26 +34,26 @@ public class ModelPost {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
-    public void setDescription(String Description) {
-        this.Description = Description;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public ModelUser getIduser() {
+    public int getIduser() {
         return iduser;
     }
 
-    public void setIduser(ModelUser iduser) {
+    public void setIduser(int iduser) {
         this.iduser = iduser;
     }
 
-    public ModelComputer getIdcomputer() {
+    public int getIdcomputer() {
         return idcomputer;
     }
 
-    public void setIdcomputer(ModelComputer idcomputer) {
+    public void setIdcomputer(int idcomputer) {
         this.idcomputer = idcomputer;
     }
     

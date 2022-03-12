@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author Mbah Royce
+ * @author Max
  */
 @Path("usercontroller")
 public class UserController {
@@ -112,5 +112,36 @@ public class UserController {
             System.out.println("error in querry" + e.getMessage());
         }
         return "Deleted Successfully";
+    }
+    
+    
+    // Login / Authentication
+    @POST
+    @Path("/login")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({"application/json"})
+    public ModelUser loginUser (ModelUser user) throws Exception {
+        ModelUser model = new ModelUser();
+        try{
+            String sql = "select * from ccmsuser";
+            Statement st = com.connexion.Connexion.seconnecter().createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                if(rs.getString("email").equals(user.getEmail()) && rs.getString("password").equals(user.getPassword())) {
+                    model.setIduser(rs.getInt("iduser"));
+                    model.setName(rs.getString("name"));
+                    model.setEmail(rs.getString("email"));
+                    model.setLogin(rs.getString("login"));
+                    model.setCity(rs.getString("city"));
+                    model.setCountry(rs.getString("country"));
+                    model.setStatus(rs.getString("status"));
+                }
+            }
+        }catch(Exception e){
+            System.out.println("error in query" + e.getMessage());
+        }
+        
+        return model;
     }
 }
