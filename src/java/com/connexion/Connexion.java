@@ -7,9 +7,9 @@ import java.sql.DriverManager;
 public class Connexion {
 
     private static Connection conex;
-    private String url = "jdbc:postgresql://localhost:5432/ccms"; //path/link
+    private String url = "jdbc:postgresql://localhost:5432/CCMS"; //path/link
     private String user = "postgres";
-    private String pwd = "admin";
+    private String pwd = "kon-boot";
 
     private Connexion() {
         try {
